@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +7,7 @@
 <title>Sunparks Countdown</title>
 
 <style>
+
 * {
     box-sizing: border-box;
 }
@@ -19,17 +20,28 @@ html, body {
 }
 
 body {
-    background: #007f87;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+
+    background-image:
+        linear-gradient(
+            rgba(0, 70, 75, 0.55),
+            rgba(0, 70, 75, 0.55)
+        ),
+        url("slides.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .container {
     width: 95%;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.35);
 }
 
 .intro {
@@ -71,6 +83,7 @@ h1 {
     font-size: 2.3vw;
     font-weight: 600;
 }
+
 </style>
 </head>
 
@@ -78,30 +91,30 @@ h1 {
 
 <div class="container">
 
-    <div class="intro">ZIJN JULLIE ER KLAAR VOOR?</div>
+    <div class="intro">ARE YOU READY?</div>
 
-    <h1>NIEUWE GLIJBANEN</h1>
+    <h1>NEW WATER SLIDES</h1>
 
     <div class="countdown">
 
         <div class="time">
             <div class="number" id="days">00</div>
-            <div class="label">DAGEN</div>
+            <div class="label">DAYS</div>
         </div>
 
         <div class="time">
             <div class="number" id="hours">00</div>
-            <div class="label">UREN</div>
+            <div class="label">HOURS</div>
         </div>
 
         <div class="time">
             <div class="number" id="minutes">00</div>
-            <div class="label">MINUTEN</div>
+            <div class="label">MINUTES</div>
         </div>
 
         <div class="time">
             <div class="number" id="seconds">00</div>
-            <div class="label">SECONDEN</div>
+            <div class="label">SECONDS</div>
         </div>
 
     </div>
@@ -113,6 +126,7 @@ h1 {
 </div>
 
 <script>
+
 const targetDate = new Date("2026-10-30T12:00:00+01:00");
 
 function updateCountdown() {
@@ -135,16 +149,20 @@ function updateCountdown() {
 
     document.getElementById("days").textContent =
         String(days).padStart(2, "0");
+
     document.getElementById("hours").textContent =
         String(hours).padStart(2, "0");
+
     document.getElementById("minutes").textContent =
         String(minutes).padStart(2, "0");
+
     document.getElementById("seconds").textContent =
         String(seconds).padStart(2, "0");
 }
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
+
 </script>
 
 </body>
