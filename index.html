@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sunparks Countdown</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background: #007f87;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.container {
+    width: 95%;
+}
+
+.intro {
+    font-size: 3vw;
+    font-weight: 600;
+    margin-bottom: 4vh;
+}
+
+h1 {
+    font-size: 5vw;
+    margin: 0 0 5vh 0;
+    font-weight: 800;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 3vw;
+}
+
+.time {
+    min-width: 14vw;
+}
+
+.number {
+    font-size: 8vw;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.label {
+    margin-top: 1.5vh;
+    font-size: 1.4vw;
+    letter-spacing: 2px;
+}
+
+.date {
+    margin-top: 6vh;
+    font-size: 2.3vw;
+    font-weight: 600;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="intro">ZIJN JULLIE ER KLAAR VOOR?</div>
+
+    <h1>NIEUWE GLIJBANEN</h1>
+
+    <div class="countdown">
+
+        <div class="time">
+            <div class="number" id="days">00</div>
+            <div class="label">DAGEN</div>
+        </div>
+
+        <div class="time">
+            <div class="number" id="hours">00</div>
+            <div class="label">UREN</div>
+        </div>
+
+        <div class="time">
+            <div class="number" id="minutes">00</div>
+            <div class="label">MINUTEN</div>
+        </div>
+
+        <div class="time">
+            <div class="number" id="seconds">00</div>
+            <div class="label">SECONDEN</div>
+        </div>
+
+    </div>
+
+    <div class="date">
+        OPENING · 30.10.2026 · 12:00
+    </div>
+
+</div>
+
+<script>
+const targetDate = new Date("2026-10-30T12:00:00+01:00");
+
+function updateCountdown() {
+
+    const now = new Date();
+    const difference = targetDate - now;
+
+    if (difference <= 0) {
+        document.getElementById("days").textContent = "00";
+        document.getElementById("hours").textContent = "00";
+        document.getElementById("minutes").textContent = "00";
+        document.getElementById("seconds").textContent = "00";
+        return;
+    }
+
+    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((difference / (1000 * 60)) % 60);
+    const seconds = Math.floor((difference / 1000) % 60);
+
+    document.getElementById("days").textContent =
+        String(days).padStart(2, "0");
+    document.getElementById("hours").textContent =
+        String(hours).padStart(2, "0");
+    document.getElementById("minutes").textContent =
+        String(minutes).padStart(2, "0");
+    document.getElementById("seconds").textContent =
+        String(seconds).padStart(2, "0");
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+</script>
+
+</body>
+</html>
